@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "projects": {
+    "cheki": "apps/cheki",
+    "cheki-e2e": "apps/cheki-e2e",
+    "sema": "apps/sema",
+    "sema-e2e": "apps/sema-e2e",
+    "soma": "apps/soma",
+    "soma-e2e": "apps/soma-e2e"
+  }
+}

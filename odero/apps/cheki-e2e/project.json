@@ -1,0 +1,28 @@
+{
+  "root": "apps/cheki-e2e",
+  "sourceRoot": "apps/cheki-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/cheki-e2e/cypress.json",
+        "devServerTarget": "cheki:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "cheki:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/cheki-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["cheki"]
+}

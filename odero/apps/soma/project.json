@@ -1,0 +1,70 @@
+{
+  "root": "apps/soma",
+  "sourceRoot": "apps/soma/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/soma",
+        "index": "apps/soma/src/index.html",
+        "baseHref": "/",
+        "main": "apps/soma/src/main.tsx",
+        "polyfills": "apps/soma/src/polyfills.ts",
+        "tsConfig": "apps/soma/tsconfig.app.json",
+        "assets": ["apps/soma/src/favicon.ico", "apps/soma/src/assets"],
+        "styles": ["apps/soma/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/soma/src/environments/environment.ts",
+              "with": "apps/soma/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "soma:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "soma:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/soma/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/soma"],
+      "options": {
+        "jestConfig": "apps/soma/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

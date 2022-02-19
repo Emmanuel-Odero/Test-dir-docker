@@ -1,0 +1,28 @@
+{
+  "root": "apps/sema-e2e",
+  "sourceRoot": "apps/sema-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/sema-e2e/cypress.json",
+        "devServerTarget": "sema:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "sema:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/sema-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["sema"]
+}

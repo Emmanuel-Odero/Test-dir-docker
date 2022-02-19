@@ -1,0 +1,28 @@
+{
+  "root": "apps/soma-e2e",
+  "sourceRoot": "apps/soma-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/soma-e2e/cypress.json",
+        "devServerTarget": "soma:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "soma:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/soma-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["soma"]
+}
